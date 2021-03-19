@@ -1,0 +1,21 @@
+def solution(n, lost, reserve):
+    answer = n - len(lost)
+    list = []
+    for i in lost:
+        for j in reserve:
+            if i==j:
+                answer = answer + 1
+                list.append(i)
+                break
+    
+    for i in range(len(list)):
+        lost.remove(list[i])
+        reserve.remove(list[i])
+    
+    for i in lost:
+        for j in reserve:
+            if i == j - 1 or i == j + 1:
+                answer = answer + 1
+                reserve.remove(j)
+                break                      
+    return answer

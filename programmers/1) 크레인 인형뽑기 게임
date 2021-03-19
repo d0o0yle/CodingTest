@@ -1,0 +1,16 @@
+def solution(board, moves):
+    stack = []
+    count = 0
+    for m in moves:
+        for col in board:
+            if col[m - 1] != 0:
+                stack.append(col[m - 1])
+                col[m - 1] = 0
+                break
+        if len(stack) > 1:
+            if stack[-1] == stack[-2]:
+                count += 2
+                stack.pop()
+                stack.pop()
+    print(stack)
+    return count

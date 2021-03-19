@@ -1,0 +1,8 @@
+def solution(n):
+    thr = []
+    while(n >= 3):
+        thr.append(n%3)
+        n = n//3
+    thr.append(n)
+    after_thr = [3**i * x for i, x in enumerate(reversed(thr))]
+    return sum(after_thr)

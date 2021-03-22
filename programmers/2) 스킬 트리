@@ -1,0 +1,11 @@
+def solution(skill, skill_trees):
+    answer = 0
+    skill_list = [s for s in skill]
+    for skill_tree in skill_trees:
+        comp_skill = ""
+        for sk in skill_tree:
+            if sk in skill_list:
+                comp_skill += sk
+        if comp_skill == skill[:len(comp_skill)]:
+            answer+=1
+    return answer

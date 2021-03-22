@@ -1,0 +1,24 @@
+def solution(progresses, speeds):
+    answer = []
+    days = []
+    for i in range(len(progresses)):
+        q = (100-progresses[i])//speeds[i]
+        r = (100-progresses[i])%speeds[i]
+        if r == 0:
+            days.append(q)
+        else:
+            days.append(q+1)
+    print(days)
+    while days:
+        temp_days = [day-days[0] for day in days]
+        for i in range(len(days)):
+            if i == len(temp_days)-1 and temp_days[i] <= 0:
+                answer.append(i+1)
+                days = []
+                break
+            if temp_days[i] > 0:
+                answer.append(i)
+                days = days[i:]
+                break
+            
+    return answer
